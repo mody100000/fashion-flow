@@ -1,0 +1,13 @@
+{
+  "title": "Electron",
+  "home": "Home",
+  "sales": "Sales",
+  "categories": "Categories",
+  "dashboard": "Dashboard",
+  "admin": "admin",
+  "signIn": {
+    "title": "Sign IN",
+    "username": "Username",
+    "password": "Password"
+  }
+}
