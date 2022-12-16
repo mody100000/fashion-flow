@@ -5,6 +5,7 @@ import HomePage from "./pages/home/Home";
 import CategoriesPage from "./pages/Categories";
 const Router = () => {
   return (
+    //"react-router-dom": "^6.4.2",
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/categories" element={<CategoriesPage />} />

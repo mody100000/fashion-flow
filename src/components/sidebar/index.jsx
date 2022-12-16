@@ -7,13 +7,12 @@ import useLocale from "../../contexts/LocaleContext";
 
 import styles from "./style.module.css";
 import SidebarIcon from "../sidebarIcon";
-import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const { t } = useLocale();
   return (
     <div className={styles.sidebar}>
-      <SidebarIcon Icon={GoHome} label={t("home")} />
+      <SidebarIcon Icon={GoHome} label={t("home")} link="/" />
       <SidebarIcon Icon={HiOutlineCurrencyDollar} label={t("sales")} />
 
       <SidebarIcon

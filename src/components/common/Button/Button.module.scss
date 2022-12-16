@@ -1,0 +1,65 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+// TODO: make some animations when hover / focus
+$lineHeight: 2px;
+$d: 0.4s;
+.btn {
+  padding: 1rem 3rem;
+  font-weight: 600;
+  color: $text-primary;
+  font-size: 1.4rem;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  overflow: hidden;
+  position: relative;
+  border: 3px solid transparent;
+  user-select: none;
+  outline: none;
+  &.primary {
+    background-color: $primary;
+  }
+  &.secondary {
+    background-color: $secondary;
+  }
+  &.warning {
+    background-color: $warning;
+  }
+  &.error {
+    background-color: $error;
+  }
+  &.dark {
+    background-color: $bg-1;
+  }
+  &:active {
+    filter: brightness(120%);
+  }
+
+  &.rounded {
+    border-radius: 4rem;
+  }
+  &:hover {
+    transform: translate(0, -4px);
+    @include box_shadow(3);
+  }
+
+  &.primary {
+    border-color: $primary;
+  }
+  &.secondary {
+    border-color: $secondary;
+  }
+  &.warning {
+    border-color: $warning;
+  }
+  &.error {
+    border-color: $error;
+  }
+  &:disabled {
+    border-color: transparent;
+    cursor: not-allowed;
+    &:active {
+      filter: none;
+    }
+  }
+}
