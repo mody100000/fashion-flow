@@ -16,7 +16,8 @@ const IconByName = ({
   };
   useEffect(() => {
     getIconByName(name);
-  }, []);
+  }, [name]);
+  
   return Icon ? (
     <span
       style={{ fontSize: size, color: color, ...customStyles }}

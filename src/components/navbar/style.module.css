@@ -2,6 +2,7 @@
 
 .top_nav {
   @apply flex flex-row items-center
+    px-3
       justify-between w-full h-20 m-0 shadow-xl;
 
   background-color: var(--gray-4);
