@@ -11,12 +11,16 @@ body {
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   background-color: white !important; /*remove me*/
 }
-html {
+html{
+  /* font-size: 62%; */
+}
+/* TODO:desktop*/
+/* html {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
+} */
 button {
   outline: none;
 }

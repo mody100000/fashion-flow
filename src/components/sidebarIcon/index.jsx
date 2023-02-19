@@ -5,7 +5,7 @@ const SidebarIcon = ({ Icon, label, link }) => {
     <>
       <Link to={link} className={styles.sidebar_icon + " group"}>
         <div>
-          <Icon size="30" />
+          <Icon size="25" />
           <span className={styles.sidebar_tooltip + " group-hover:scale-100"}>
             {label}
           </span>

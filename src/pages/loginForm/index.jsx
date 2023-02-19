@@ -1,19 +1,36 @@
 import styles from "./LoginForm.module.css";
-import useApp from "../../contexts/AppContext";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import useLocale from "../../contexts/LocaleContext";
+import { useAsyncFn } from "../../hooks/useAsync";
+import { apiLogin } from "../../services/userServices";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const { t } = useLocale();
-  const { login } = useApp();
   const username = useRef();
   const password = useRef();
+  const {error , loading , execute , value} = useAsyncFn(apiLogin)
+
+  useEffect(() => {
+    if(value){
+      // we get access token
+     const accessToken = value.accessToken
+    //  TODO: store the access token
+     alert(accessToken)
+    }
+    if(error){
+      const msg = error?.data?.error || "something went wrong"
+      // TODO: move it to a seperate util
+      toast.error(msg)
+    }
+  } , [value , error])
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // TODO: add validation for username and password
-    login(username.current.value, password.current.value);
+    execute(username.current.value , password.current.value)
   };
   return (
     <div className={styles.container}>

@@ -15,11 +15,8 @@ const initialState = {
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
-  const login = async (username, password) => {
-    //TODO: show toast notification instead of the alert
-  };
   return (
-    <AppContext.Provider value={{ ...state, login }}>
+    <AppContext.Provider value={{ ...state }}>
       {children}
     </AppContext.Provider>
   );

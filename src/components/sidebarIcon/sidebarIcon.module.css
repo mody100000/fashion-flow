@@ -14,7 +14,7 @@
      rounded-md shadow-md
      text-white 
      text-xs font-bold
-     transition-all duration-100 scale-0 translate-y-1/4 origin-left top-0;
+     transition-all duration-100 scale-0 translate-y-1/4 origin-left top-0 z-50;
   background-color: var(--gray-4);
 }
 

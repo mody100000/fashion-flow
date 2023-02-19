@@ -1,11 +1,23 @@
-import IconByName from "../../components/common/IconByName";
 import MainLayout from "../../layouts/main-layout";
+import Card from "../../components/categoryCard/index";
+import ConrnerButton from "../../components/common/CornerButton";
 
 const CategoriesPage = () => {
   return (
-    <MainLayout>
-      <IconByName name="AiFillCar" size={40} color="#e2e2e2" />
-    </MainLayout>
+    <div>
+      <MainLayout>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 h-full overflow-y-auto overflow-x-hidden p-4">
+          <ConrnerButton />
+        
+          <Card itemsCount={7} title="clothes" iconName="GiClothes" />
+          <Card itemsCount={7} title="clothes" iconName="GiClothes" />
+       
+     
+
+        </div>
+      </MainLayout>
+    </div>
   );
 };
 
