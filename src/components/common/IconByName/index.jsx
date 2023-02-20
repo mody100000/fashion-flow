@@ -10,6 +10,8 @@ const IconByName = ({
 }) => {
   const [Icon, setIcon] = useState(null);
   const getIconByName = async (name) => {
+    // TODO: fix this performance issue
+    // each time an icon rendered , the whole icons is loaded 
     const icons = await import("react-icons/all");
     const Icon = icons[name];
     setIcon(Icon);
