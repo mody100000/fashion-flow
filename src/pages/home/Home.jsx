@@ -1,15 +1,31 @@
-import CategoryIconList from "../../components/categoryIconList";
+
+import { useEffect, useState } from "react";
+import api from "../../Api/axios";
+import CustomAreaChart from "../../components/common/AreaChart";
 import MainLayout from "../../layouts/main-layout";
-import useLocale from "../../contexts/LocaleContext";
 
 const HomePage = () => {
-  const { t } = useLocale();
+  const [data , setData] = useState([]) 
+
+  const getCatReport = async () => {
+    const {data : report} = await api.get('/category/report/12' )
+    const reportData = []
+    Object.keys(report).forEach(month => {
+      reportData.push({name : month , categories : report[month].length})
+   })
+   setData(reportData)
+  }
+  useEffect(() => {
+    
+    getCatReport()
+  } , [])
+
   return (
     <MainLayout>
-      <h1 className="text-white text-center text-3xl my-4 font-bold">
-        {t("home page")}
-      </h1>
-      <CategoryIconList />
+      <div className="flex">
+      <CustomAreaChart data={data} name="categories"/>
+      {/* <CustomAreaChart data={data}/> */}
+      </div>
     </MainLayout>
   );
 };

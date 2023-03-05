@@ -6,7 +6,7 @@
     "dev": "concurrently \"vite\" \" cd ../electron-server && npm run dev \"",
     "dev:yarn": "concurrently \"vite\" \" cd ../electron-server && yarn dev \"",
     "build": "vite build",
-    "lint" : "eslint .",
+    "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.4.2",
     "react-toastify": "^9.1.1",
+    "recharts": "^2.4.3",
     "teeny-conf": "^4.0.0"
   },
   "devDependencies": {
