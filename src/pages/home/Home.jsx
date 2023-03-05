@@ -1,3 +1,4 @@
+import CategoryIconList from "../../components/categoryIconList";
 import MainLayout from "../../layouts/main-layout";
 import useLocale from "../../contexts/LocaleContext";
 
@@ -8,6 +9,7 @@ const HomePage = () => {
       <h1 className="text-white text-center text-3xl my-4 font-bold">
         {t("home page")}
       </h1>
+      <CategoryIconList />
     </MainLayout>
   );
 };

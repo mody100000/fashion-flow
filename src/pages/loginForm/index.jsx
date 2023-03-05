@@ -5,32 +5,40 @@ import useLocale from "../../contexts/LocaleContext";
 import { useAsyncFn } from "../../hooks/useAsync";
 import { apiLogin } from "../../services/userServices";
 import { toast } from "react-toastify";
+import useApp from "../../contexts/AppContext";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const { t } = useLocale();
+  const { storeAccessToken } = useApp();
+  const navigate = useNavigate();
   const username = useRef();
   const password = useRef();
-  const {error , loading , execute , value} = useAsyncFn(apiLogin)
+  const { error, execute, value } = useAsyncFn(apiLogin);
 
+  const handleLoginSuccess = async () => {
+    // we get access token
+    const accessToken = value.accessToken;
+    await storeAccessToken(accessToken);
+    //redirect to the homepage
+    navigate("/");
+  };
+  const handleLoginFailure = () => {
+    const msg =
+      error?.data?.error || error?.data?.msg || "something went wrong";
+
+    console.log(error);
+    toast.error(msg);
+  };
   useEffect(() => {
-    if(value){
-      // we get access token
-     const accessToken = value.accessToken
-    //  TODO: store the access token
-     alert(accessToken)
-    }
-    if(error){
-      const msg = error?.data?.error || "something went wrong"
-      // TODO: move it to a seperate util
-      toast.error(msg)
-    }
-  } , [value , error])
-
+    if (value) handleLoginSuccess();
+    if (error) handleLoginFailure();
+  }, [value, error]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // TODO: add validation for username and password
-    execute(username.current.value , password.current.value)
+    execute(username.current.value, password.current.value);
   };
   return (
     <div className={styles.container}>
