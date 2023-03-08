@@ -8,4 +8,5 @@ const Spinner = ({ size = 30, customStyle , className }) => {
   );
 };
 
+
 export default Spinner;
