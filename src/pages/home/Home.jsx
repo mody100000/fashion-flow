@@ -41,7 +41,7 @@ const HomePage = () => {
 
   return (
     <MainLayout>
-      <div className="flex">
+      <div className="grid grid-cols-2 gap-6 p-4">
         <CustomAreaChart data={data} name="categories" />
         <CustomAreaChart data={prodData} name="products" />
         <CustomAreaChart data={custData} name="customers" />

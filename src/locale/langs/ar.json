@@ -11,5 +11,6 @@
     "password": "كلمه المرور"
   },
   "home page": "صفحه المنزل",
-  "clothes": "ملابس"
+  "clothes": "ملابس",
+  "label is a required field": "يجب ملأ اسم الصنف"
 }

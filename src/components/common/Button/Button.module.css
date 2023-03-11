@@ -1,0 +1,7 @@
+@import "../../../styles/vars.css";
+
+.btn {
+  background-color: var(--dodgerBlue-1);
+  color: white;
+  @apply py-2 px-6 my-4;
+}

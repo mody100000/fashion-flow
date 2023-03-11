@@ -10,7 +10,7 @@ import useResponsive from "../../../hooks/useResponsive";
 
 const CustomAreaChart = ({ data, name, color1, color2 }) => {
   const { isMobile } = useResponsive();
-  const width = isMobile ? "100%" : "50%";
+  const width = "100%";
 
   const getColor = (key) => {
     return getComputedStyle(document.documentElement).getPropertyValue(key);

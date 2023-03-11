@@ -1,0 +1,4 @@
+.textInput {
+  background-color: var(--gray-4);
+  @apply text-gray-300 placeholder:text-gray-600;
+}
