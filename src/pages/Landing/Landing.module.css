@@ -1,0 +1,47 @@
+.main {
+  @apply bg-primary-3 h-full;
+}
+.shadow {
+  position: absolute;
+  display: block;
+  width: 300px;
+  height: 300px;
+  top: 0;
+  border-radius: 100%;
+  z-index: -1;
+  @apply blur-3xl bg-gradient-to-b from-secondary-1 to-primary-3;
+}
+
+.shadow2 {
+  position: absolute;
+  display: block;
+  width: 700px;
+  height: 300px;
+  top: -100%;
+  right: 0;
+  border-radius: 100%;
+  z-index: -1;
+  @apply blur-3xl bg-gradient-to-r from-secondary-2 to-red-400;
+}
+
+.shapeDivider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+  @apply bg-zinc-900;
+}
+
+.shapeDivider svg {
+  position: relative;
+  display: block;
+  width: calc(119% + 1.3px);
+  height: 174px;
+}
+
+.shapeDivider .shapeFill {
+  @apply fill-primary-3;
+}

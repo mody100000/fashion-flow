@@ -32,7 +32,7 @@ const injectSetValue = (Component, setValue) => {
   };
 
   NewComponent.displayName = "InjectedComponent";
-  return NewComponent;
+  return <NewComponent />;
 };
 
 const FormBuilder = ({ config }) => {
@@ -41,6 +41,7 @@ const FormBuilder = ({ config }) => {
     handleSubmit,
     formState: { errors },
     register,
+    setValue,
   } = useForm({
     resolver: yupResolver(config.schema),
     defaultValues: config.fields.reduce(
@@ -54,7 +55,7 @@ const FormBuilder = ({ config }) => {
       {config.fields.map((field) => {
         const Component = field.Component;
         return (
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2" key={field.label}>
             <span className="font-bold text-gray-200">{t(field.label)}</span>
             {field.type !== "custom" && (
               <input

@@ -1,4 +1,4 @@
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { formatIconName } from "../../utils/formattedIconName";
 import Spinner from "../common/Spinner";
 

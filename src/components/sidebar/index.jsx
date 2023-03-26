@@ -7,12 +7,13 @@ import useLocale from "../../contexts/LocaleContext";
 
 import styles from "./style.module.css";
 import SidebarIcon from "../sidebarIcon";
+import { AiOutlineSkin } from "react-icons/ai";
 
 const Sidebar = () => {
   const { t } = useLocale();
   return (
     <div className={styles.sidebar}>
-      <SidebarIcon Icon={GoHome} label={t("home")} link="/" />
+      <SidebarIcon Icon={GoHome} label={t("home")} link="/dashboard" />
       <SidebarIcon Icon={HiOutlineCurrencyDollar} label={t("sales")} />
 
       <SidebarIcon
@@ -21,6 +22,11 @@ const Sidebar = () => {
         link="/categories"
       />
 
+      <SidebarIcon
+        Icon={AiOutlineSkin}
+        label={t("products")}
+        link="/products"
+      />
       <SidebarIcon Icon={MdOutlineDashboardCustomize} label={t("dashboard")} />
       <SidebarIcon Icon={FiUser} label={t("admin")} />
     </div>
