@@ -1,0 +1,9 @@
+input[type="text"],
+input[type="number"],
+textarea {
+  @apply text-primary-1 p-3;
+}
+
+::placeholder {
+  @apply text-gray-600;
+}

@@ -3,7 +3,7 @@ import IconSelector from "../components/formBuilderCustomInputs/iconSelector";
 
 const schema = yup.object({
   label: yup.string().required(),
-  icon: yup.string().required(),
+  icon: yup.string(),
 });
 
 export const categoryFormConfig = (onSubmit) => ({
@@ -12,13 +12,13 @@ export const categoryFormConfig = (onSubmit) => ({
     {
       type: "text",
       label: "label",
-      defaultValue: "",
+      // defaultValue: "",
       placeholder: "category label",
     },
     {
       type: "custom",
       Component: IconSelector,
-      label: "Icon",
+      label: "icon",
     },
   ],
   onSubmit,
