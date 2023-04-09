@@ -1,22 +1,57 @@
 import { useEffect } from "react";
-import { createResource, getAll } from "../../../services/crudServices";
+import {
+  createResource,
+  deleteReource,
+  getAll,
+  updateResource,
+} from "../../../services/crudServices";
 import { useState } from "react";
 import IconByName from "./../IconByName/index";
 import moment from "moment";
 import { camelCaseToWords } from "../../../utils/camelCaseToWords";
-import { BsThreeDots } from "react-icons/bs";
+import { BsTrash, BsPen } from "react-icons/bs";
 import ConrnerButton from "./../CornerButton/index";
 import { AnimatePresence } from "framer-motion";
 import FormBuilder from "../../formBuilder";
 import Modal from "../../Modal";
 import { showToast } from "../../../utils/showToast";
+import Button from "../Button";
 
 const Crud = ({ name, fields, formConfig }) => {
   const [data, setData] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [confirm, setConfirm] = useState(false);
+  const [deletedId, setDeletedId] = useState();
+  const [updatedId, setUpdatedId] = useState();
 
-  const close = () => setModalOpen(false);
+  const close = () => {
+    setModalOpen(false);
+    setDeletedId(null);
+  };
   const open = () => setModalOpen(true);
+
+  const handleDeleteResource = async () => {
+    if (!deletedId) return;
+    await deleteReource(name, deletedId);
+
+    setData((prev) => prev.filter((item) => item._id !== deletedId));
+    handleHideDeleteModal();
+    showToast(`${name} is deleted successfully`, "success");
+  };
+
+  const showEditModal = (resourceId) => {
+    setUpdatedId(resourceId);
+    open();
+  };
+  const handleShowDeleteModal = (resourceId) => {
+    setConfirm(true);
+    setDeletedId(resourceId);
+  };
+
+  const handleHideDeleteModal = () => {
+    setConfirm(false);
+    setDeletedId(null);
+  };
 
   const getAllResources = async () => {
     const resources = await getAll(name);
@@ -27,10 +62,28 @@ const Crud = ({ name, fields, formConfig }) => {
   }, []);
 
   const onSubmit = async (data) => {
-    const newRecord = await createResource(name, data);
-    setData((prev) => [newRecord, ...prev]);
-    close();
-    showToast(`${name} is created`, "success");
+    if(updatedId){
+      // update 
+     await updateResource(name , updatedId , data)
+     getAllResources()
+     // setData(prev => {
+      //   const index = prev.findIndex(p => p._id === updatedId)
+      //   const oldResource = Object.assign({} , prev[index])
+
+      //   prev[index] = {...oldResource , ...updated}
+      //   return prev
+      // })
+      close();
+      showToast(`${name} is updated successfully`, "success");
+    }
+    else{
+      //create
+      const newRecord = await createResource(name, data);
+      setData((prev) => [newRecord, ...prev]);
+      close();
+      showToast(`${name} is created successfully`, "success");
+    
+    }
   };
 
   const getSingleRowData = (item) => {
@@ -41,8 +94,23 @@ const Crud = ({ name, fields, formConfig }) => {
             <HandleDataType field={field} item={item} />
           </td>
         ))}
+
         <td className="px-6 py-4">
-          <BsThreeDots color="white" />
+          <BsPen
+            onClick={() => showEditModal(item._id)}
+            color="white"
+            size={30}
+            className="bg-primary-1 p-2 cursor-pointer rounded-sm shadow-sm text-white"
+          />
+        </td>
+
+        <td className="px-6 py-4">
+          <BsTrash
+            onClick={() => handleShowDeleteModal(item._id)}
+            color="white"
+            size={30}
+            className="bg-red-500 p-2 cursor-pointer rounded-sm shadow-sm text-white"
+          />
         </td>
       </>
     );
@@ -58,7 +126,7 @@ const Crud = ({ name, fields, formConfig }) => {
       const arr = item[arrayName];
       return (
         <ul>
-          {arr.map((item, i) => (
+          {arr?.map((item, i) => (
             <li className="list-disc" key={i}>
               {item[keyName]}
             </li>
@@ -73,7 +141,7 @@ const Crud = ({ name, fields, formConfig }) => {
     if (type === "date")
       return (
         <span className="text-white">
-          {moment(value).format(field?.format || "d MMM YYYY")}
+          {moment(value).format(field?.format || "D MMM YYYY")}
         </span>
       );
   };
@@ -89,7 +157,10 @@ const Crud = ({ name, fields, formConfig }) => {
               </th>
             ))}
             <th scope="col" className="px-6 py-3">
-              Actions
+              edit
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Delete
             </th>
           </tr>
         </thead>
@@ -105,24 +176,30 @@ const Crud = ({ name, fields, formConfig }) => {
         </tbody>
       </table>
       <ConrnerButton onClick={open} />
-      <AnimatePresence
-        // Disable any initial animations on children that
-        // are present when the component is first rendered
-        initial={false}
-        // Only render one component at a time.
-        // The exiting component will finish its exit
-        // animation before entering component is rendered
-        exitBeforeEnter={true}
-        // Fires when all exiting nodes have completed animating out
-        onExitComplete={() => null}
-      >
+      <AnimatePresence initial={false} onExitComplete={() => null}>
+        {/* create & edit modal */}
         {modalOpen && (
-          <Modal
-            title={`create ${name}`}
-            modalOpen={modalOpen}
-            handleClose={close}
-          >
-            <FormBuilder config={formConfig(onSubmit)} />
+          <Modal title={`${updatedId ? "Update" : "Create"} ${name}`} handleClose={close}>
+            <FormBuilder
+              config={formConfig(onSubmit)}
+              updatedId={updatedId}
+              name={name}
+            />
+          </Modal>
+        )}
+
+        {/* confirm delete modal */}
+
+        {confirm && (
+          <Modal title={`Are you sure ?`} handleClose={handleHideDeleteModal}>
+            <div className="flex items-center justify-center mt-7 gap-10">
+              <Button onClick={handleDeleteResource} variant="error">
+                Delete
+              </Button>
+              <Button onClick={handleHideDeleteModal} variant="default">
+                Cancel
+              </Button>
+            </div>
           </Modal>
         )}
       </AnimatePresence>

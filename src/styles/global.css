@@ -1,7 +1,8 @@
 input[type="text"],
+input[type="password"],
 input[type="number"],
 textarea {
-  @apply text-primary-1 p-3;
+  @apply text-primary-0 p-3;
 }
 
 ::placeholder {

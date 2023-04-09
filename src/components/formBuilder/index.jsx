@@ -25,18 +25,37 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "./../common/Button/index";
 import useLocale from "../../contexts/LocaleContext";
 import styles from "./FormBuilder.module.css";
+import { useEffect, useMemo, useState } from "react";
+import { getOne } from "../../services/crudServices";
 
-const injectSetValue = (Component, setValue) => {
+const injectSetValue = (Component, setValue , currentValue) => {
   const NewComponent = ({ props }) => {
-    return <Component {...props} setValue={setValue} />;
+    return <Component {...props} setValue={setValue} currentValue={currentValue} />;
   };
 
   NewComponent.displayName = "InjectedComponent";
   return <NewComponent />;
 };
 
-const FormBuilder = ({ config }) => {
+const FormBuilder = ({ config , updatedId , name }) => {
+  const [resource , setResource] = useState()
   const { t } = useLocale();
+
+  const getDefaultValues = () => {
+    if(!updatedId){
+      //create mode
+      return config.fields.reduce(
+        (o, field) => Object.assign(o, { [field.label]: field.defaultValue }),
+        {}
+      )
+    }else{
+      // in edit mode we will handle it by the setValue method
+      return {}
+    }
+  }
+
+
+
   const {
     handleSubmit,
     formState: { errors },
@@ -44,15 +63,33 @@ const FormBuilder = ({ config }) => {
     setValue,
   } = useForm({
     resolver: yupResolver(config.schema),
-    defaultValues: config.fields.reduce(
-      (o, field) => Object.assign(o, { [field.label]: field.defaultValue }),
-      {}
-    ),
+    defaultValues: getDefaultValues(),
   });
+  const getResource = async () => {
+    const data = await getOne(name , updatedId)
+    setResource(data)
+
+    config.fields.forEach(field => {
+      setValue(field.label , data[field.label])
+    })
+    
+  }
+
+  const getResouceValue =(key) => {
+    if(! resource) return null
+    return resource[key]
+  }
+
+  useEffect(() => {
+    if(!updatedId) return
+    getResource()
+  } , [updatedId])
+
 
   const inputField = (field) => {
     const Component = field.Component;
-
+    const resourceValue = getResouceValue(field.label)
+    
     // specific cases
     if (field.type === "textarea")
       return (
@@ -63,7 +100,7 @@ const FormBuilder = ({ config }) => {
       );
 
     if (field.type === "custom")
-      return injectSetValue(Component, (v) => setValue(field.label, v));
+      return injectSetValue(Component, (v) => setValue(field.label, v), resourceValue);
 
     // more general cases
     return (
@@ -76,22 +113,27 @@ const FormBuilder = ({ config }) => {
     );
   };
 
+
+  const Fields = useMemo(() => {
+    return config.fields.map((field) => (
+      <div className="flex flex-col gap-2 mb-4" key={field.label}>
+        <span className="font-bold text-gray-200">{t(field.label)}</span>
+        {inputField(field)}
+
+        {errors[field.label] && (
+          <span className="text-red-700 mt-2 font-bold">
+            {t(errors[field.label].message)}
+          </span>
+        )}
+      </div>
+    ))
+  }, [config , resource])
+
   return (
     <form onSubmit={handleSubmit(config.onSubmit)}>
-      {config.fields.map((field) => (
-        <div className="flex flex-col gap-2 mb-4" key={field.label}>
-          <span className="font-bold text-gray-200">{t(field.label)}</span>
-          {inputField(field)}
-
-          {errors[field.label] && (
-            <span className="text-red-700 mt-2 font-bold">
-              {t(errors[field.label].message)}
-            </span>
-          )}
-        </div>
-      ))}
-
-      <Button type="submit">{t(config.submitText || "submit")}</Button>
+   
+      {Fields}
+      <Button variant="info" type="submit">{t(config.submitText || "submit")}</Button>
     </form>
   );
 };
