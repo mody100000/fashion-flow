@@ -2,7 +2,7 @@ import { GoHome } from "react-icons/go";
 import { HiOutlineCurrencyDollar } from "react-icons/hi";
 import { FiUser } from "react-icons/fi";
 import { IoIosList } from "react-icons/io";
-import { MdOutlineDashboardCustomize } from "react-icons/md";
+import { HiUserGroup } from "react-icons/hi";
 import useLocale from "../../contexts/LocaleContext";
 
 import styles from "./style.module.css";
@@ -27,7 +27,11 @@ const Sidebar = () => {
         label={t("products")}
         link="/products"
       />
-      <SidebarIcon Icon={MdOutlineDashboardCustomize} label={t("dashboard")} />
+      <SidebarIcon
+        Icon={HiUserGroup}
+        label={t("customers")}
+        link="/customers"
+      />
       <SidebarIcon Icon={FiUser} label={t("admin")} />
     </div>
   );
