@@ -5,6 +5,7 @@ import MainLayout from "../../layouts/main-layout";
 import HomeCard from "./../../components/common/HomeCard";
 import { AiTwotoneTags, AiOutlineUser, AiOutlineSkin } from "react-icons/ai";
 import { CategoryCards } from "./../../components/categoryCards";
+import requireAuth from "../../components/requireAuth";
 
 const HomePage = () => {
   const [catData, setCatData] = useState([]);
@@ -42,13 +43,13 @@ const HomePage = () => {
     getCatReport(), getProductReport(), getCustomerReport();
   }, []);
 
-  const catCount = !!catData.length
+  const catCount = catData.length
     ? catData[catData.length - 1]["categories"]
     : 0;
-  const prodCount = !!prodData.length
+  const prodCount = prodData.length
     ? prodData[prodData.length - 1]["products"]
     : 0;
-  const cusCount = !!custData.length
+  const cusCount = custData.length
     ? custData[custData.length - 1]["customers"]
     : 0;
   return (
@@ -71,4 +72,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default requireAuth(HomePage);

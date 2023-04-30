@@ -1,6 +1,7 @@
 import MainLayout from "../../layouts/main-layout";
 import Crud from "../../components/common/Crud";
 import { categoryFormConfig } from "../../formConfigs/categoryFormConfig";
+import requireAuth from "../../components/requireAuth";
 
 const CategoriesPage = () => {
   return (
@@ -33,4 +34,4 @@ const CategoriesPage = () => {
   );
 };
 
-export default CategoriesPage;
+export default requireAuth(CategoriesPage);

@@ -2,6 +2,7 @@ import MainLayout from "../../layouts/main-layout";
 import Crud from "./../../components/common/Crud/index";
 import useLocale from "../../contexts/LocaleContext";
 import { productFormConfig } from "../../formConfigs/productFormConfig";
+import requireAuth from "../../components/requireAuth";
 
 const ProductsPage = () => {
   const { t } = useLocale();
@@ -46,4 +47,4 @@ const ProductsPage = () => {
   );
 };
 
-export default ProductsPage;
+export default requireAuth(ProductsPage);

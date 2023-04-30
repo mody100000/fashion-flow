@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import LoginForm from "./pages/loginForm";
 import HomePage from "./pages/home/Home";
 import CategoriesPage from "./pages/Categories";
-import requireAuth from "./components/requireAuth";
 import ProductsPage from "./pages/Products";
 import LandingPage from "./pages/Landing/index";
 import CustomersPage from "./pages/Customers";
@@ -17,13 +16,12 @@ const Router = () => {
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<LoginForm />} />
       <Route path="/logout" element={<Logout />} />
-      <Route path="/dashboard" element={requireAuth(HomePage)} />
-      <Route path="/categories" element={requireAuth(CategoriesPage)} />
-      <Route path="/products" element={requireAuth(ProductsPage)} />
-      <Route path="/customers" element={requireAuth(CustomersPage)} />
-      <Route path="/receipts" element={requireAuth(ReceiptPage)} />
+      <Route path="/dashboard" element={<HomePage />} />
+      <Route path="/categories" element={<CategoriesPage />} />
+      <Route path="/products" element={<ProductsPage />} />
+      <Route path="/customers" element={<CustomersPage />} />
+      <Route path="/receipts" element={<ReceiptPage />} />
       <Route path="*" element={<NotFound />} />
-      {/* TODO: add 404 page */}
       {/* <Route path="*" element={<Navigate to="/dashboard" replace />} /> */}
     </Routes>
   );

@@ -2,6 +2,7 @@ import MainLayout from "../../layouts/main-layout";
 import Crud from "./../../components/common/Crud/index";
 import useLocale from "../../contexts/LocaleContext";
 import { receiptFormConfig } from "../../formConfigs/receiptFormConfig";
+import requireAuth from "../../components/requireAuth";
 
 const ReceiptPage = () => {
   const { t } = useLocale();
@@ -38,4 +39,4 @@ const ReceiptPage = () => {
   );
 };
 
-export default ReceiptPage;
+export default requireAuth(ReceiptPage);
