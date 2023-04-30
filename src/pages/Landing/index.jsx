@@ -4,6 +4,7 @@ import { clsx } from "clsx";
 import LandingNavbar from "../../components/landingNavbar";
 import useLocale from "../../contexts/LocaleContext";
 import { SiElectron } from "react-icons/si";
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   const { t } = useLocale();
@@ -65,7 +66,9 @@ const LandingPage = () => {
                 consectetur, distinctio ullam maiores.
               </p>
             </div>
-            <button className={styles.btn}>log in</button>
+            <Link to="/login">
+              <button className={styles.btn}>log in</button>
+            </Link>
           </div>
         </div>
         <footer className="bg-white dark:bg-gray-900">
@@ -145,12 +148,8 @@ const LandingPage = () => {
             </div>
             <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
             <div className="sm:flex sm:items-center sm:justify-between">
-              <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-                © 2023{" "}
-                <a href="https://flowbite.com/" className="hover:underline">
-                  Flowbite™
-                </a>
-                . All Rights Reserved.
+              <span className="text-m text-gray-500 sm:text-center dark:text-gray-400">
+                © 2023 Electron Team.
               </span>
               <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
                 <a

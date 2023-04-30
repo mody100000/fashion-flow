@@ -1,8 +1,9 @@
 import { GoHome } from "react-icons/go";
-import { HiOutlineCurrencyDollar } from "react-icons/hi";
+import { TfiReceipt } from "react-icons/tfi";
 import { FiUser } from "react-icons/fi";
 import { IoIosList } from "react-icons/io";
 import { HiUserGroup } from "react-icons/hi";
+import { BiLogOut } from "react-icons/bi";
 import useLocale from "../../contexts/LocaleContext";
 
 import styles from "./style.module.css";
@@ -14,7 +15,7 @@ const Sidebar = () => {
   return (
     <div className={styles.sidebar}>
       <SidebarIcon Icon={GoHome} label={t("home")} link="/dashboard" />
-      <SidebarIcon Icon={HiOutlineCurrencyDollar} label={t("sales")} />
+      <SidebarIcon Icon={TfiReceipt} label={t("receipt")} link="/receipts" />
 
       <SidebarIcon
         Icon={IoIosList}
@@ -33,6 +34,9 @@ const Sidebar = () => {
         link="/customers"
       />
       <SidebarIcon Icon={FiUser} label={t("admin")} />
+      <div className={styles.logout}>
+        <SidebarIcon Icon={BiLogOut} label={t("logout")} link="/logout" />
+      </div>
     </div>
   );
 };
