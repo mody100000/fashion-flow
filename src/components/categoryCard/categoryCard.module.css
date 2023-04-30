@@ -6,8 +6,8 @@
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: none;
-  min-height: 30rem;
-  max-height: 30rem;
+  min-height: 15rem;
+  max-height: 15rem;
   color: #fff;
   background-color: var(--gray-4);
   display: flex;
@@ -18,7 +18,7 @@
   position: relative;
   cursor: pointer;
 }
-.card:hover{
+.card:hover {
   box-shadow: 0 0 6px 7px #2929297e;
   border-radius: 3rem;
 }
@@ -34,11 +34,11 @@
   text-transform: capitalize;
 }
 
-.count{
+.count {
   position: absolute;
   bottom: 0;
-  left : 0;
-  padding : 0.7rem 2rem;
+  left: 0;
+  padding: 0.7rem 2rem;
   background-color: var(--dodgerBlue-2);
   font-weight: bold;
 }

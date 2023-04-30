@@ -8,12 +8,12 @@
   background-color: var(--gray-4);
 }
 .title_text {
-  @apply text-2xl text-blue-500 tracking-wider font-semibold text-opacity-80 
+  @apply text-2xl text-secondary-1 tracking-wider font-semibold text-opacity-80 
      me-2 my-auto 
     transition duration-300 ease-in-out;
 }
 .title_hash_tag {
-  @apply text-xl text-blue-500 tracking-wider font-semibold text-opacity-80 
+  @apply text-xl text-secondary-1 tracking-wider font-semibold text-opacity-80 
     me-2 my-auto 
    transition duration-300 ease-in-out;
 }
@@ -22,8 +22,8 @@
 }
 
 .nav_icon {
-  @apply text-gray-500 text-opacity-90 cursor-pointer transition duration-300 ease-in-out 
-    hover:text-blue-400 ms-3 me-4;
+  @apply text-primary-1 text-opacity-90 cursor-pointer transition duration-300 ease-in-out 
+    hover:text-secondary-3 ms-3 me-4;
 }
 .icons {
   @apply flex;

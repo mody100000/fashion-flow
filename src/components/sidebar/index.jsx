@@ -1,19 +1,21 @@
 import { GoHome } from "react-icons/go";
-import { HiOutlineCurrencyDollar } from "react-icons/hi";
+import { TfiReceipt } from "react-icons/tfi";
 import { FiUser } from "react-icons/fi";
 import { IoIosList } from "react-icons/io";
-import { MdOutlineDashboardCustomize } from "react-icons/md";
+import { HiUserGroup } from "react-icons/hi";
+import { BiLogOut } from "react-icons/bi";
 import useLocale from "../../contexts/LocaleContext";
 
 import styles from "./style.module.css";
 import SidebarIcon from "../sidebarIcon";
+import { AiOutlineSkin } from "react-icons/ai";
 
 const Sidebar = () => {
   const { t } = useLocale();
   return (
     <div className={styles.sidebar}>
-      <SidebarIcon Icon={GoHome} label={t("home")} link="/" />
-      <SidebarIcon Icon={HiOutlineCurrencyDollar} label={t("sales")} />
+      <SidebarIcon Icon={GoHome} label={t("home")} link="/dashboard" />
+      <SidebarIcon Icon={TfiReceipt} label={t("receipt")} link="/receipts" />
 
       <SidebarIcon
         Icon={IoIosList}
@@ -21,8 +23,20 @@ const Sidebar = () => {
         link="/categories"
       />
 
-      <SidebarIcon Icon={MdOutlineDashboardCustomize} label={t("dashboard")} />
+      <SidebarIcon
+        Icon={AiOutlineSkin}
+        label={t("products")}
+        link="/products"
+      />
+      <SidebarIcon
+        Icon={HiUserGroup}
+        label={t("customers")}
+        link="/customers"
+      />
       <SidebarIcon Icon={FiUser} label={t("admin")} />
+      <div className={styles.logout}>
+        <SidebarIcon Icon={BiLogOut} label={t("logout")} link="/logout" />
+      </div>
     </div>
   );
 };

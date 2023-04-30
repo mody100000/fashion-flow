@@ -22,7 +22,7 @@ const dropIn = {
   },
 };
 
-const Modal = ({ handleClose, text }) => {
+const Modal = ({ handleClose, children, title }) => {
   return (
     <Backdrop onClick={handleClose}>
       <motion.div
@@ -33,8 +33,11 @@ const Modal = ({ handleClose, text }) => {
         animate="visible"
         exit="exit"
       >
-        <p>{text}</p>
-        <button onClick={handleClose}>Close</button>
+        <div className="w-fit mx-auto">
+          <h3 className="text-white font-bold text-3xl mb-3">{title}</h3>
+          <div className="bg-gray-400 mb-7 h-0.5"></div>
+        </div>
+        {children}
       </motion.div>
     </Backdrop>
   );

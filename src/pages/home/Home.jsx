@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import api from "../../Api/axios";
 import CustomAreaChart from "../../components/common/AreaChart";
 import MainLayout from "../../layouts/main-layout";
+import HomeCard from "./../../components/common/HomeCard";
+import { AiTwotoneTags, AiOutlineUser, AiOutlineSkin } from "react-icons/ai";
+import { CategoryCards } from "./../../components/categoryCards";
 
 const HomePage = () => {
-  const [data, setData] = useState([]);
+  const [catData, setCatData] = useState([]);
   const [prodData, setProdData] = useState([]);
   const [custData, setCustData] = useState([]);
 
@@ -14,7 +17,7 @@ const HomePage = () => {
     Object.keys(report).forEach((month) => {
       reportData.push({ name: month, categories: report[month].length });
     });
-    setData(reportData);
+    setCatData(reportData);
   };
 
   const getProductReport = async () => {
@@ -39,14 +42,31 @@ const HomePage = () => {
     getCatReport(), getProductReport(), getCustomerReport();
   }, []);
 
+  const catCount = !!catData.length
+    ? catData[catData.length - 1]["categories"]
+    : 0;
+  const prodCount = !!prodData.length
+    ? prodData[prodData.length - 1]["products"]
+    : 0;
+  const cusCount = !!custData.length
+    ? custData[custData.length - 1]["customers"]
+    : 0;
   return (
     <MainLayout>
-      <div className="grid grid-cols-2 gap-6 p-4">
-        <CustomAreaChart data={data} name="categories" />
+      <div className="grid grid-cols-3 gap-4 mx-auto p-3">
+        <HomeCard title="categories" content={catCount} Icon={AiTwotoneTags} />
+        <HomeCard title="products" content={prodCount} Icon={AiOutlineSkin} />
+        <HomeCard title="customers" content={cusCount} Icon={AiOutlineUser} />
+        {/* <HomeCard title="customers" content={cusCount} Icon={AiTwotoneTags} /> */}
+      </div>
+      <div className="mb-10"></div>
+      <div className="grid grid-cols-3 px-1 py-7">
+        <CustomAreaChart data={catData} name="categories" />
         <CustomAreaChart data={prodData} name="products" />
         <CustomAreaChart data={custData} name="customers" />
-        {/* <CustomAreaChart data={data}/> */}
       </div>
+
+      <CategoryCards />
     </MainLayout>
   );
 };

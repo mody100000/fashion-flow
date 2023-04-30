@@ -5,7 +5,7 @@
   height: 100%;
   width: 100%;
   opacity: 2;
-  background: #2f3136e1;
+  @apply backdrop-blur-sm;
   display: flex;
   align-items: center;
   justify-content: center;
