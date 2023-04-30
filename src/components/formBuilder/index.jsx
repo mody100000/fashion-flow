@@ -28,68 +28,73 @@ import styles from "./FormBuilder.module.css";
 import { useEffect, useMemo, useState } from "react";
 import { getOne } from "../../services/crudServices";
 
-const injectSetValue = (Component, setValue , currentValue) => {
+const injectFormProps = (Component, setValue, currentValue) => {
   const NewComponent = ({ props }) => {
-    return <Component {...props} setValue={setValue} currentValue={currentValue} />;
+    return (
+      <Component {...props} setValue={setValue} currentValue={currentValue} />
+    );
   };
 
   NewComponent.displayName = "InjectedComponent";
   return <NewComponent />;
 };
 
-const FormBuilder = ({ config , updatedId , name }) => {
-  const [resource , setResource] = useState()
+const FormBuilder = ({ config, updatedId, name }) => {
+  const [resource, setResource] = useState();
   const { t } = useLocale();
 
   const getDefaultValues = () => {
-    if(!updatedId){
+    if (!updatedId) {
       //create mode
       return config.fields.reduce(
         (o, field) => Object.assign(o, { [field.label]: field.defaultValue }),
         {}
-      )
-    }else{
+      );
+    } else {
       // in edit mode we will handle it by the setValue method
-      return {}
+      return {};
     }
-  }
-
-
+  };
 
   const {
     handleSubmit,
     formState: { errors },
     register,
     setValue,
+    reset,
   } = useForm({
     resolver: yupResolver(config.schema),
     defaultValues: getDefaultValues(),
+    mode: "all",
   });
   const getResource = async () => {
-    const data = await getOne(name , updatedId)
-    setResource(data)
+    const data = await getOne(name, updatedId);
+    setResource(data);
 
-    config.fields.forEach(field => {
-      setValue(field.label , data[field.label])
-    })
-    
-  }
+    config.fields.forEach((field) => {
+      setValue(field.label, data[field.label]);
+    });
+  };
 
-  const getResouceValue =(key) => {
-    if(! resource) return null
-    return resource[key]
-  }
+  const getResouceValue = (key) => {
+    if (!resource) {
+      // create
+      return reset();
+    }
+    // edit
+    return resource[key];
+  };
 
   useEffect(() => {
-    if(!updatedId) return
-    getResource()
-  } , [updatedId])
-
+    if (!updatedId) return;
+    // edit
+    getResource();
+  }, [updatedId]);
 
   const inputField = (field) => {
     const Component = field.Component;
-    const resourceValue = getResouceValue(field.label)
-    
+    const resourceValue = getResouceValue(field.label);
+
     // specific cases
     if (field.type === "textarea")
       return (
@@ -100,7 +105,12 @@ const FormBuilder = ({ config , updatedId , name }) => {
       );
 
     if (field.type === "custom")
-      return injectSetValue(Component, (v) => setValue(field.label, v), resourceValue);
+      // TODO: think of a way to not render this each time
+      return injectFormProps(
+        Component,
+        (v) => setValue(field.label, v),
+        resourceValue
+      );
 
     // more general cases
     return (
@@ -112,7 +122,6 @@ const FormBuilder = ({ config , updatedId , name }) => {
       />
     );
   };
-
 
   const Fields = useMemo(() => {
     return config.fields.map((field) => (
@@ -126,14 +135,15 @@ const FormBuilder = ({ config , updatedId , name }) => {
           </span>
         )}
       </div>
-    ))
-  }, [config , resource])
+    ));
+  }, [config, resource, errors]);
 
   return (
     <form onSubmit={handleSubmit(config.onSubmit)}>
-   
       {Fields}
-      <Button variant="info" type="submit">{t(config.submitText || "submit")}</Button>
+      <Button variant="info" type="submit">
+        {t(config.submitText || "submit")}
+      </Button>
     </form>
   );
 };

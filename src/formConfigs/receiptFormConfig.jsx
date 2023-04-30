@@ -2,9 +2,9 @@ import * as yup from "yup";
 import { useEffect, useState } from "react";
 import { getAll } from "./../services/crudServices";
 const schema = yup.object({
-  Number: yup.string().required(),
   customer: yup.string().required(),
-  products: yup.array().required().min(1),
+  // products: yup.array().required().min(1),
+
   // .items({
   //   product: yup.string().required(),
   //   label: yup
@@ -31,12 +31,8 @@ export const receiptFormConfig = (onSubmit) => ({
   schema,
   fields: [
     {
-      type: "text",
-      label: "number",
-    },
-    {
       type: "custom",
-      label: "custom",
+      label: "customer",
       Component: CustomerSelector,
     },
   ],
@@ -60,7 +56,7 @@ export const CustomerSelector = ({ setValue, currentValue }) => {
       id="countries"
       className="bg-primary-5 p-4 text-white rounded-lg"
     >
-      <option className="text-primary-1" selected value={""}>
+      <option className="text-primary-1" value={""}>
         select customer
       </option>
       {customers.map((cust, i) => (
@@ -70,7 +66,7 @@ export const CustomerSelector = ({ setValue, currentValue }) => {
           key={i}
           value={cust._id}
         >
-          {cust.label}
+          {cust.name}
         </option>
       ))}
     </select>

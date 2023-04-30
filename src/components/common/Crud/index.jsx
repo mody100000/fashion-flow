@@ -43,6 +43,10 @@ const Crud = ({ name, fields, formConfig }) => {
     setUpdatedId(resourceId);
     open();
   };
+  const showCreateModal = () => {
+    setUpdatedId(null);
+    open();
+  };
   const handleShowDeleteModal = (resourceId) => {
     setConfirm(true);
     setDeletedId(resourceId);
@@ -62,11 +66,11 @@ const Crud = ({ name, fields, formConfig }) => {
   }, []);
 
   const onSubmit = async (data) => {
-    if(updatedId){
-      // update 
-     await updateResource(name , updatedId , data)
-     getAllResources()
-     // setData(prev => {
+    if (updatedId) {
+      // update
+      await updateResource(name, updatedId, data);
+      getAllResources();
+      // setData(prev => {
       //   const index = prev.findIndex(p => p._id === updatedId)
       //   const oldResource = Object.assign({} , prev[index])
 
@@ -75,14 +79,12 @@ const Crud = ({ name, fields, formConfig }) => {
       // })
       close();
       showToast(`${name} is updated successfully`, "success");
-    }
-    else{
+    } else {
       //create
       const newRecord = await createResource(name, data);
       setData((prev) => [newRecord, ...prev]);
       close();
       showToast(`${name} is created successfully`, "success");
-    
     }
   };
 
@@ -175,11 +177,22 @@ const Crud = ({ name, fields, formConfig }) => {
           ))}
         </tbody>
       </table>
-      <ConrnerButton onClick={open} />
+
+      {/* no data  */}
+      {!data.length && (
+        <h2 className="text-3xl text-gray-200 my-7 text-center">
+          No data found
+        </h2>
+      )}
+
+      <ConrnerButton onClick={showCreateModal} />
       <AnimatePresence initial={false} onExitComplete={() => null}>
         {/* create & edit modal */}
         {modalOpen && (
-          <Modal title={`${updatedId ? "Update" : "Create"} ${name}`} handleClose={close}>
+          <Modal
+            title={`${updatedId ? "Update" : "Create"} ${name}`}
+            handleClose={close}
+          >
             <FormBuilder
               config={formConfig(onSubmit)}
               updatedId={updatedId}

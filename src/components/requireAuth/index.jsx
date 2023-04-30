@@ -30,13 +30,13 @@ const requireAuth = (Component) => {
     console.log("wow");
     return (
       <>
-        {loading && (
+        {authenticated && <Component {...props} {...authUser} />}
+        {loading && !authenticated && (
           <div className="h-screen bg-zinc-800 flex justify-center items-center">
             <Spinner size={50} />
           </div>
         )}{" "}
         {/* TODO: show skeleton loading instead */}
-        {authenticated && <Component {...props} {...authUser} />}
       </>
     );
   };
