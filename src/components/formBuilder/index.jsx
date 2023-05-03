@@ -61,7 +61,7 @@ const FormBuilder = ({ config, updatedId, name }) => {
     formState: { errors },
     register,
     setValue,
-    reset,
+    // reset,
   } = useForm({
     resolver: yupResolver(config.schema),
     defaultValues: getDefaultValues(),
@@ -79,7 +79,7 @@ const FormBuilder = ({ config, updatedId, name }) => {
   const getResouceValue = (key) => {
     if (!resource) {
       // create
-      return reset();
+      return null;
     }
     // edit
     return resource[key];
