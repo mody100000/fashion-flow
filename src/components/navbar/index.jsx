@@ -2,7 +2,6 @@ import { SiElectron } from "react-icons/si";
 import { MdOutlineDarkMode } from "react-icons/md";
 import { FiSettings } from "react-icons/fi";
 import { BsTranslate } from "react-icons/bs";
-import { BiLogOut } from "react-icons/bi";
 import useLocale from "../../contexts/LocaleContext";
 import styles from "./style.module.css";
 const Navbar = () => {
@@ -26,7 +25,6 @@ const Navbar = () => {
           size="30"
           className={`${styles.nav_icon} me-10 ms-5`}
         />
-        <BiLogOut size="35" className={`${styles.nav_icon} me-10 ms-5`} />
       </div>
     </div>
   );

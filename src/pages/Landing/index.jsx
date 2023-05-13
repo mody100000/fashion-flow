@@ -6,9 +6,10 @@ import useLocale from "../../contexts/LocaleContext";
 import { SiElectron } from "react-icons/si";
 import { Link } from "react-router-dom";
 
+// export const APP_NAME = "Electron";
+
 const LandingPage = () => {
   const { t } = useLocale();
-  const APP_NAME = "Electron";
   return (
     <main>
       <div className={styles.main}>
@@ -19,18 +20,20 @@ const LandingPage = () => {
             {/* <div className={styles.shadow}></div> */}
             <div className={styles.shadow2}></div>
             <h1 className="text-center flex flex-col gap-4 font-c font-bold text-3xl text-white md:text-6xl">
-              <span>{APP_NAME} is a CMS for managing and</span>
+              <span>{t("Electron is a (CMS) content management system")}</span>
               <span
                 className={clsx(
                   "text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-secondary-1 "
                 )}
               >
-                storing clothing store data in an efficient way
+                {t(
+                  "for managing and storing clothing store data in an efficient way"
+                )}
               </span>
             </h1>
 
             <p className="text-white text-lg capitalize md:text-3xl text-center">
-              take your business to the next level
+              {t("take your business to the next level")}
             </p>
           </Container>
           <div className={styles.shapeDivider}>
@@ -50,7 +53,6 @@ const LandingPage = () => {
         {/* end header */}
 
         <br />
-
         <br />
         <br />
         <br />
@@ -58,16 +60,12 @@ const LandingPage = () => {
           <div className="flex flex-col lg:flex-row gap-4">
             <div className={styles.callout__content}>
               <h2 className={styles.callout__heading}>
-                Ready to get started ?
+                {t("Ready to get started ?")}
               </h2>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo
-                provident aut amet tempore expedita adipisci incidunt
-                consectetur, distinctio ullam maiores.
-              </p>
+              <p>{t("callout")}</p>
             </div>
             <Link to="/login">
-              <button className={styles.btn}>log in</button>
+              <button className={styles.btn}>{t("log in")}</button>
             </Link>
           </div>
         </div>
@@ -83,7 +81,7 @@ const LandingPage = () => {
               <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                 <div>
                   <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                    Resources
+                    {t("Resources")}
                   </h2>
                   <ul className="text-gray-600 dark:text-gray-400 font-medium">
                     <li className="mb-4">
@@ -106,7 +104,7 @@ const LandingPage = () => {
                 </div>
                 <div>
                   <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                    Follow us
+                    {t("Follow us")}
                   </h2>
                   <ul className="text-gray-600 dark:text-gray-400 font-medium">
                     <li className="mb-4">
@@ -129,7 +127,7 @@ const LandingPage = () => {
                 </div>
                 <div>
                   <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                    Legal
+                    {t("Legal")}
                   </h2>
                   <ul className="text-gray-600 dark:text-gray-400 font-medium">
                     <li className="mb-4">
@@ -149,7 +147,7 @@ const LandingPage = () => {
             <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
             <div className="sm:flex sm:items-center sm:justify-between">
               <span className="text-m text-gray-500 sm:text-center dark:text-gray-400">
-                © 2023 Electron Team.
+                {t("© 2023 Electron Team.")}
               </span>
               <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
                 <a

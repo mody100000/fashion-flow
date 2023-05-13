@@ -17,8 +17,8 @@ const ReceiptPage = () => {
             type: "text",
           },
           {
-            name: "customer",
-            type: "text",
+            name: "customer.name",
+            type: "relation",
           },
           {
             name: "createdAt",

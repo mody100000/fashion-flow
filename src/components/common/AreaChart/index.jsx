@@ -8,8 +8,10 @@ import {
 } from "recharts";
 import styles from "./AreaChart.module.css";
 import useResponsive from "../../../hooks/useResponsive";
+import useLocale from "../../../contexts/LocaleContext";
 
 const CustomAreaChart = ({ data, name, color1, color2 }) => {
+  const { t } = useLocale();
   const { isMobile } = useResponsive();
   const width = "100%";
 
@@ -21,7 +23,9 @@ const CustomAreaChart = ({ data, name, color1, color2 }) => {
   const gradiantId = `${name}-gradiant`;
   return (
     <div className="flex flex-col">
-      <h1 className={styles.reportHeader}>{name} report</h1>
+      <h1 className={styles.reportHeader}>
+        {name} {"report"}
+      </h1>
       <ResponsiveContainer width={width} height={400}>
         <AreaChart
           data={data}

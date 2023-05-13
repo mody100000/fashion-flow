@@ -13,7 +13,8 @@ const Button = ({
 
   return (
     <button
-    type={type}
+      role={"button"}
+      type={type}
       className={`
       transition-all
        duration-500 

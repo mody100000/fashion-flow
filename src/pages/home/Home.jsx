@@ -6,8 +6,11 @@ import HomeCard from "./../../components/common/HomeCard";
 import { AiTwotoneTags, AiOutlineUser, AiOutlineSkin } from "react-icons/ai";
 import { CategoryCards } from "./../../components/categoryCards";
 import requireAuth from "../../components/requireAuth";
+import useLocale from "../../contexts/LocaleContext";
 
 const HomePage = () => {
+  const { t } = useLocale();
+
   const [catData, setCatData] = useState([]);
   const [prodData, setProdData] = useState([]);
   const [custData, setCustData] = useState([]);
@@ -55,9 +58,21 @@ const HomePage = () => {
   return (
     <MainLayout>
       <div className="grid grid-cols-3 gap-4 mx-auto p-3">
-        <HomeCard title="categories" content={catCount} Icon={AiTwotoneTags} />
-        <HomeCard title="products" content={prodCount} Icon={AiOutlineSkin} />
-        <HomeCard title="customers" content={cusCount} Icon={AiOutlineUser} />
+        <HomeCard
+          title={t("categories")}
+          content={catCount}
+          Icon={AiTwotoneTags}
+        />
+        <HomeCard
+          title={t("products")}
+          content={prodCount}
+          Icon={AiOutlineSkin}
+        />
+        <HomeCard
+          title={t("customers")}
+          content={cusCount}
+          Icon={AiOutlineUser}
+        />
         {/* <HomeCard title="customers" content={cusCount} Icon={AiTwotoneTags} /> */}
       </div>
       <div className="mb-10"></div>

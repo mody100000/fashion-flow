@@ -28,10 +28,15 @@ import styles from "./FormBuilder.module.css";
 import { useEffect, useMemo, useState } from "react";
 import { getOne } from "../../services/crudServices";
 
-const injectFormProps = (Component, setValue, currentValue) => {
+const injectFormProps = (Component, setValue, currentValue, watchedValue) => {
   const NewComponent = ({ props }) => {
     return (
-      <Component {...props} setValue={setValue} currentValue={currentValue} />
+      <Component
+        {...props}
+        setValue={setValue}
+        currentValue={currentValue}
+        watchedValue={watchedValue}
+      />
     );
   };
 
@@ -61,11 +66,12 @@ const FormBuilder = ({ config, updatedId, name }) => {
     formState: { errors },
     register,
     setValue,
+    watch,
     // reset,
   } = useForm({
     resolver: yupResolver(config.schema),
     defaultValues: getDefaultValues(),
-    mode: "all",
+    // mode: "all",
   });
   const getResource = async () => {
     const data = await getOne(name, updatedId);
@@ -104,14 +110,16 @@ const FormBuilder = ({ config, updatedId, name }) => {
         ></textarea>
       );
 
-    if (field.type === "custom")
+    if (field.type === "custom") {
       // TODO: think of a way to not render this each time
-      return injectFormProps(
+      const Content = injectFormProps(
         Component,
         (v) => setValue(field.label, v),
-        resourceValue
+        resourceValue,
+        watch(field.label)
       );
-
+      return <>{Content}</>;
+    }
     // more general cases
     return (
       <input
@@ -139,7 +147,8 @@ const FormBuilder = ({ config, updatedId, name }) => {
   }, [config, resource, errors]);
 
   return (
-    <form onSubmit={handleSubmit(config.onSubmit)}>
+    // the handleSubmit is a custom submit , but the onSubmit is the default submit method
+    <form onSubmit={handleSubmit(config.handleSubmit || config.onSubmit)}>
       {Fields}
       <Button variant="info" type="submit">
         {t(config.submitText || "submit")}

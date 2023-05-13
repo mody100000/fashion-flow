@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import CategoryIconList from "./../categoryIconList/index";
 
 const IconSelector = ({ setValue }) => {
-  useEffect(() => {
-    setValue("AiTwotoneTags")
-  } ,[])
-  return <span>select an icon</span>;
+  return (
+    <div className="h-80 overflow-y-auto bg-primary-5">
+      <CategoryIconList setIcon={setValue} />
+    </div>
+  );
 };
 
 export default IconSelector;

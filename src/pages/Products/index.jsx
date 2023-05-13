@@ -20,9 +20,13 @@ const ProductsPage = () => {
             name: "price",
             type: "text",
           },
+          // {
+          //   name: "discount",
+          //   type: "text",
+          // },
           {
-            name: "discount",
-            type: "text",
+            name: "category.label",
+            type: "relation",
           },
           {
             name: "createdAt",

@@ -122,8 +122,7 @@ const Crud = ({ name, fields, formConfig }) => {
     const type = field.type;
 
     if (type === "list") {
-      const arrayName = field.name.split(".")[0];
-      const keyName = field.name.split(".")[1];
+      const [arrayName, keyName] = field.name.split(".");
 
       const arr = item[arrayName];
       return (
@@ -137,13 +136,21 @@ const Crud = ({ name, fields, formConfig }) => {
       );
     }
 
+    if (type === "relation") {
+      const [parent, child] = field.name.split(".");
+
+      const objValue = item[parent];
+      if (!objValue)
+        return <span className="text-red-700">This {parent} was deleted</span>;
+      return <span className="text-white">{objValue[child]}</span>;
+    }
     const value = item[field.name];
     if (type === "text") return <span className="text-white">{value}</span>;
     if (type === "icon") return <IconByName color="white" name={value} />;
     if (type === "date")
       return (
         <span className="text-white">
-          {moment(value).format(field?.format || "D MMM YYYY")}
+          {value ? moment(value).format(field?.format || "D MMMM YYYY") : ""}
         </span>
       );
   };
