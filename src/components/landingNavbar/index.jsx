@@ -1,4 +1,4 @@
-import { SiElectron } from "react-icons/si";
+import { GiClothes } from "react-icons/gi";
 import { BsTranslate } from "react-icons/bs";
 import { SlLogin } from "react-icons/sl";
 import useLocale from "../../contexts/LocaleContext";
@@ -9,7 +9,7 @@ const LandingNavbar = () => {
   return (
     <div className={styles.top_nav}>
       <div className={styles.logo}>
-        <SiElectron size="40" className={styles.title_hash_tag} />
+        <GiClothes size="40" className={styles.title_hash_tag} />
         <h1 className={styles.title_text}>{t("title")}</h1>
       </div>
       <div className={styles.icons}>

@@ -3,7 +3,7 @@ import styles from "./Landing.module.css";
 import { clsx } from "clsx";
 import LandingNavbar from "../../components/landingNavbar";
 import useLocale from "../../contexts/LocaleContext";
-import { SiElectron } from "react-icons/si";
+import { GiClothes } from "react-icons/gi";
 import { Link } from "react-router-dom";
 
 // export const APP_NAME = "Electron";
@@ -74,7 +74,7 @@ const LandingPage = () => {
             <div className="md:flex md:justify-between">
               <div className="mb-6 md:mb-0">
                 <div className={styles.logo}>
-                  <SiElectron size="40" className={styles.title_hash_tag} />
+                  <GiClothes size="40" className={styles.title_hash_tag} />
                   <h1 className={styles.title_text}>{t("title")}</h1>
                 </div>
               </div>

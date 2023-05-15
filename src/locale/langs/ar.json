@@ -1,5 +1,5 @@
 {
-  "title": "الكترون",
+  "title": "فاشون فلو",
   "home": "المنزل",
   "sales": "المبيعات",
   "name": "الاسم",
@@ -18,7 +18,7 @@
   "home page": "صفحه المنزل",
   "clothes": "ملابس",
   "label is a required field": "يجب ملأ اسم الصنف",
-  "Electron is a (CMS) content management system": "الكترون هو نظام إدارة المحتوى",
+  "Electron is a (CMS) content management system": "فاشون فلو هو نظام إدارة المحتوى",
   "for managing and storing clothing store data in an efficient way": "لإدارة وتخزين بيانات متجر الملابس بطريقة فعالة",
   "take your business to the next level": "أنقل عملك إلى المستوى التالي",
   "Ready to get started ?": "هل انت مستعد للبدء ؟",
@@ -27,6 +27,6 @@
   "Resources": "المصادر",
   "Follow us": "تابعنا علي",
   "Legal": "سياسة الخصوصية",
-  "© 2023 Electron Team.": "© ٢٠٢٣ فريق الكترون.",
+  "© 2023 Electron Team.": "© ٢٠٢٣ فريق فاشون فلو.",
   "callout": "تم تصميم منصتنا لمساعدتك على تبسيط سير عملك وزيادة الإنتاجية وتحقيق أهداف عملك ، باستخدام أدواتنا سهلة الاستخدام ، يمكنك إدارة مشاريعك والتعاون مع فريقك والبقاء على اطلاع بجدولك الزمني ، وانضم إلى مجتمعنا من رواد الأعمال الناجحين و خذ عملك الى المستوى التالي."
 }

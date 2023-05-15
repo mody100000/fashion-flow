@@ -1,20 +1,15 @@
-import { SiElectron } from "react-icons/si";
+import { GiClothes } from "react-icons/gi";
 import { MdOutlineDarkMode } from "react-icons/md";
 import { FiSettings } from "react-icons/fi";
 import { BsTranslate } from "react-icons/bs";
 import useLocale from "../../contexts/LocaleContext";
 import styles from "./style.module.css";
 const Navbar = () => {
-  function handleLogout() {
-    // Clear the session storage and set the logged in state to false
-    sessionStorage.clear();
-    setLoggedIn(false);
-  }
   const { toggleLang, t } = useLocale();
   return (
     <div className={styles.top_nav}>
       <div className={styles.logo}>
-        <SiElectron size="35" className={styles.title_hash_tag} />
+        <GiClothes size="35" className={styles.title_hash_tag} />
         <h1 className={styles.title_text}>{t("title")}</h1>
       </div>
       <div className={styles.icons}>
