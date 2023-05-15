@@ -193,7 +193,7 @@ const Crud = ({ name, fields, formConfig }) => {
           <tr>
             {fields.map((field) => (
               <th key={field.name} scope="col" className="px-6 py-3">
-                {camelCaseToWords(field.name)}
+                {camelCaseToWords(field.header || field.name)}
               </th>
             ))}
             <th scope="col" className="px-6 py-3">

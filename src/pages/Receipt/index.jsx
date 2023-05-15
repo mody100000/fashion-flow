@@ -29,6 +29,7 @@ const ReceiptPage = () => {
             type: "date",
           },
           {
+            header: "details",
             name: "products:product.name,size,itemsNumber",
             type: "combo",
           },
