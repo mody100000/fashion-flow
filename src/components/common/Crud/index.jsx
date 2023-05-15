@@ -69,7 +69,7 @@ const Crud = ({ name, fields, formConfig }) => {
     if (updatedId) {
       // update
       await updateResource(name, updatedId, data);
-      getAllResources();
+
       // setData(prev => {
       //   const index = prev.findIndex(p => p._id === updatedId)
       //   const oldResource = Object.assign({} , prev[index])
@@ -86,6 +86,8 @@ const Crud = ({ name, fields, formConfig }) => {
       close();
       showToast(`${name} is created successfully`, "success");
     }
+
+    await getAllResources();
   };
 
   const getSingleRowData = (item) => {
@@ -136,6 +138,35 @@ const Crud = ({ name, fields, formConfig }) => {
       );
     }
 
+    if (type === "combo") {
+      const [arrName, keys] = field.name.split(":");
+      const keysArr = keys.split(",");
+
+      const arr = item[arrName];
+
+      const results = [];
+
+      arr.forEach((item) => {
+        const oneItem = [];
+        keysArr.forEach((key) => {
+          if (key.includes(".")) {
+            const [parent, child] = key.split(".");
+            oneItem.push(item[parent][child]);
+          } else oneItem.push(item[key]);
+        });
+        results.push(oneItem.join(" , "));
+      });
+
+      return (
+        <ul>
+          {results?.map((item, i) => (
+            <li className="list-disc" key={i}>
+              {item}
+            </li>
+          ))}
+        </ul>
+      );
+    }
     if (type === "relation") {
       const [parent, child] = field.name.split(".");
 

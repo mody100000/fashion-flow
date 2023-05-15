@@ -29,8 +29,8 @@ const ReceiptPage = () => {
             type: "date",
           },
           {
-            name: "products.label",
-            type: "list",
+            name: "products:product.name,size,itemsNumber",
+            type: "combo",
           },
         ]}
         formConfig={receiptFormConfig}

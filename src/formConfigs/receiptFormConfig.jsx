@@ -2,6 +2,7 @@ import * as yup from "yup";
 import { useEffect, useState } from "react";
 import { getAll } from "./../services/crudServices";
 import Button from "../components/common/Button";
+import IconByName from "../components/common/IconByName";
 const schema = yup.object({
   customer: yup.string().required(),
   products: yup.array(),
@@ -46,15 +47,39 @@ export const receiptFormConfig = (onSubmit) => ({
   onSubmit,
 });
 
-const SingleProductSelector = ({ allProducts, handleSetValue }) => {
+const SingleProductSelector = ({
+  allProducts,
+  handleSetValue,
+  deleteYourSelf,
+}) => {
+  const SIZES = [
+    "xs",
+    "sm",
+    "md",
+    "lg",
+    "xl",
+    "xxl",
+    "3xl",
+    "4xl",
+    "5xl",
+    "extra large",
+  ];
   return (
     <div className="shadow-lg my-3 p-4 ">
+      <div className="flex justify-end mb-4" onClick={deleteYourSelf}>
+        <IconByName
+          name="AiFillDelete"
+          className="cursor-pointer"
+          color="white"
+        />
+      </div>
+
       {/* select the product */}
 
       <select
         onChange={(e) => handleSetValue("product", e.target.value)}
         id="countries"
-        className="bg-primary-5 p-4 text-white rounded-lg w-full"
+        className="bg-primary-5 p-4 text-white rounded-lg w-full mb-4"
       >
         <option className="text-primary-1" value={""}>
           select Product
@@ -67,6 +92,21 @@ const SingleProductSelector = ({ allProducts, handleSetValue }) => {
       </select>
 
       {/* Select the size */}
+      <select
+        onChange={(e) => handleSetValue("size", e.target.value)}
+        id="sizes"
+        className="bg-primary-5 p-4 text-white rounded-lg w-full"
+      >
+        <option className="text-primary-1" value={""}>
+          select size
+        </option>
+        {SIZES.map((size, i) => (
+          <option className="text-white" key={i} value={size._id}>
+            {size}
+          </option>
+        ))}
+      </select>
+
       <input
         type="number"
         className="text-lg p-3 bg-primary-5 w-full mt-5"
@@ -94,7 +134,7 @@ const ProductsSelector = ({ setValue }) => {
 
   const handleAddProductSelector = () => {
     const lastNum = productsArrNum[productsArrNum.length - 1];
-    setProductsArrNum((prev) => [...prev, lastNum + 1]);
+    setProductsArrNum((prev) => [...prev, isNaN(lastNum) ? 1 : lastNum + 1]);
   };
   const handleSetValue = (n, key, value) => {
     const draft = Object.assign({}, finalData);
@@ -116,6 +156,9 @@ const ProductsSelector = ({ setValue }) => {
           handleSetValue={(key, value) => handleSetValue(n, key, value)}
           key={n}
           allProducts={allProducts}
+          deleteYourSelf={() => {
+            setProductsArrNum((prev) => prev.filter((number) => number !== n));
+          }}
         />
       ))}
 

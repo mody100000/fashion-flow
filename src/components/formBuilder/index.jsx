@@ -112,13 +112,18 @@ const FormBuilder = ({ config, updatedId, name }) => {
 
     if (field.type === "custom") {
       // TODO: think of a way to not render this each time
-      const Content = injectFormProps(
-        Component,
-        (v) => setValue(field.label, v),
-        resourceValue,
-        watch(field.label)
-      );
-      return <>{Content}</>;
+      const Content = () => {
+        const InjectedComponent = injectFormProps(
+          Component,
+          (v) => setValue(field.label, v),
+          resourceValue,
+          watch(field.label)
+        );
+
+        return <>{InjectedComponent}</>;
+      };
+
+      return <Content />;
     }
     // more general cases
     return (
