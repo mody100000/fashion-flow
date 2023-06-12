@@ -1,12 +1,9 @@
 import MainLayout from "../../layouts/main-layout";
 import Crud from "./../../components/common/Crud/index";
-import useLocale from "../../contexts/LocaleContext";
 import { customerFormConfig } from "../../formConfigs/customerFormConfig";
 import requireAuth from "../../components/requireAuth";
 
 const CustomersPage = () => {
-  const { t } = useLocale();
-
   return (
     <MainLayout>
       <Crud

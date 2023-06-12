@@ -6,27 +6,11 @@ import IconByName from "../components/common/IconByName";
 const schema = yup.object({
   customer: yup.string().required(),
   products: yup.array(),
-
-  // .items({
-  //   product: yup.string().required(),
-  //   label: yup
-  //     .string()
-  //     .required()
-  //     .valid([
-  //       "xs",
-  //       "sm",
-  //       "md",
-  //       "lg",
-  //       "xl",
-  //       "xxl",
-  //       "3xl",
-  //       "4xl",
-  //       "5xl",
-  //       "extra large",
-  //     ])
-  //     .label("size label"),
-  //   stock: yup.number().default(0),
-  // }),
+  price: yup
+    .number()
+    .required()
+    .min(5)
+    .transform((v) => (isNaN(v) ? 0 : v)),
 });
 
 export const receiptFormConfig = (onSubmit) => ({
@@ -36,6 +20,10 @@ export const receiptFormConfig = (onSubmit) => ({
       type: "custom",
       label: "customer",
       Component: CustomerSelector,
+    },
+    {
+      type: "number",
+      label: "price",
     },
     {
       type: "custom",

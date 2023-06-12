@@ -6,8 +6,6 @@ import useLocale from "../../contexts/LocaleContext";
 import { GiClothes } from "react-icons/gi";
 import { Link } from "react-router-dom";
 
-// export const APP_NAME = "Electron";
-
 const LandingPage = () => {
   const { t } = useLocale();
   return (
@@ -17,7 +15,6 @@ const LandingPage = () => {
         {/* Start header */}
         <div className="h-[70vh] flex flex-col bg-zinc-900 items-center pt-24 overflow-hidden relative">
           <Container className="flex flex-col gap-12 z-20 relative">
-            {/* <div className={styles.shadow}></div> */}
             <div className={styles.shadow2}></div>
             <h1 className="text-center flex flex-col gap-4 font-c font-bold text-3xl text-white md:text-6xl">
               <span>{t("Electron is a (CMS) content management system")}</span>
@@ -89,7 +86,7 @@ const LandingPage = () => {
                         href="https://flowbite.com/"
                         className="hover:underline"
                       >
-                        Electron
+                        FashionFlow
                       </a>
                     </li>
                     <li>

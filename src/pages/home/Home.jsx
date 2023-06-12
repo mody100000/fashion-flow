@@ -73,7 +73,6 @@ const HomePage = () => {
           content={cusCount}
           Icon={AiOutlineUser}
         />
-        {/* <HomeCard title="customers" content={cusCount} Icon={AiTwotoneTags} /> */}
       </div>
       <div className="mb-10"></div>
       <div className="grid grid-cols-3 px-1 py-7">

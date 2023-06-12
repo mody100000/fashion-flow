@@ -1,6 +1,5 @@
 import { GoHome } from "react-icons/go";
 import { TfiReceipt } from "react-icons/tfi";
-// import { FiUser } from "react-icons/fi";
 import { IoIosList } from "react-icons/io";
 import { HiUserGroup } from "react-icons/hi";
 import { BiLogOut } from "react-icons/bi";
@@ -33,7 +32,6 @@ const Sidebar = () => {
         label={t("customers")}
         link="/customers"
       />
-      {/* <SidebarIcon Icon={FiUser} label={t("admin")} /> */}
       <div className={styles.logout}>
         <SidebarIcon Icon={BiLogOut} label={t("logout")} link="/logout" />
       </div>

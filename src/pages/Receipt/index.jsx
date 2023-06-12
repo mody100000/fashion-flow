@@ -1,12 +1,9 @@
 import MainLayout from "../../layouts/main-layout";
 import Crud from "./../../components/common/Crud/index";
-import useLocale from "../../contexts/LocaleContext";
 import { receiptFormConfig } from "../../formConfigs/receiptFormConfig";
 import requireAuth from "../../components/requireAuth";
 
 const ReceiptPage = () => {
-  const { t } = useLocale();
-
   return (
     <MainLayout>
       <Crud
@@ -29,9 +26,14 @@ const ReceiptPage = () => {
             type: "date",
           },
           {
-            header: "details",
+            header: "product details",
             name: "products:product.name,size,itemsNumber",
             type: "combo",
+          },
+          {
+            header: "total price",
+            name: "price",
+            type: "text",
           },
         ]}
         formConfig={receiptFormConfig}

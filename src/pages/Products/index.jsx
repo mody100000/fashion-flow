@@ -1,12 +1,9 @@
 import MainLayout from "../../layouts/main-layout";
 import Crud from "./../../components/common/Crud/index";
-import useLocale from "../../contexts/LocaleContext";
 import { productFormConfig } from "../../formConfigs/productFormConfig";
 import requireAuth from "../../components/requireAuth";
 
 const ProductsPage = () => {
-  const { t } = useLocale();
-
   return (
     <MainLayout>
       <Crud
@@ -20,10 +17,6 @@ const ProductsPage = () => {
             name: "price",
             type: "text",
           },
-          // {
-          //   name: "discount",
-          //   type: "text",
-          // },
           {
             name: "category.label",
             type: "relation",
@@ -36,14 +29,6 @@ const ProductsPage = () => {
             name: "updatedAt",
             type: "date",
           },
-          {
-            name: "sizes.label",
-            type: "list",
-          },
-          // {
-          //   name: "category",
-          //   type: "text",
-          // },
         ]}
         formConfig={productFormConfig}
       />

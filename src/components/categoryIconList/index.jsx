@@ -9,10 +9,12 @@ const CategoryIconList = ({ setIcon }) => {
   const [search, setSearch] = useState(null);
   const getAllIcons = async () => {
     setLoading(true);
-    const fcIcons = await import(`react-icons/fc`);
-    const aiIcons = await import(`react-icons/ai`);
-    const ciIcons = await import(`react-icons/ci`);
-    setIcons(Object.assign({}, fcIcons, aiIcons, ciIcons));
+    // const fcIcons = await import(`react-icons/fc`);
+    // const aiIcons = await import(`react-icons/ai`);
+    // const ciIcons = await import(`react-icons/ci`);
+    const giIcons = await import(`react-icons/gi`);
+    const riIcons = await import(`react-icons/ri`);
+    setIcons(Object.assign({}, giIcons, riIcons));
     setLoading(false);
   };
 
