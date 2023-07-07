@@ -12,3 +12,5 @@ when the user logs in the first thing going to appears is the dashboard in the n
 in the body of the dashboard it contains three cards of categories and products and customers this card shows how many items are on this card 
 after that, there are the statistics and the analytics which contain three graphs of the same cards and it shows the progress of the addition,
 after that, there are the category cards which contain the icon of the category and the name of the category and how many items or products are in this category
+![Screenshot (15)](https://github.com/mody100000/fashion-flow/assets/69405482/d07251cf-08ac-4dfd-aa65-37d11bf29d6e)
+![Screenshot (19)](https://github.com/mody100000/fashion-flow/assets/69405482/f8531d02-779e-4ec6-93f7-13950c113f06)
