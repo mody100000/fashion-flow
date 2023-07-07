@@ -1,5 +1,14 @@
 # fashion-flow  fashion-flow is a cms (content management system) for managing and storing clothing store data in an efficient way which helps admins to track their tasks,
 Fashionflow is designed to help you streamline your workflow, increase productivity, and achieve your business goals. With our easy-to-use tools, you can manage your projects, collaborate with your team, and stay on top of your schedule.
-I used react for the front-end and node.js for the back-end and MongoDB for the database
+I used react for the front-end and node.js for the back-end and MongoDB for the database,
+the first thing is the landing page which makes users know more about fashion flow cms and it contains the login and the localization feature
 ![Screenshot (7)](https://github.com/mody100000/fashion-flow/assets/69405482/f37eae88-0741-41df-bd50-654605f76411)
-![Screenshot (15)](https://github.com/mody100000/fashion-flow/assets/69405482/fb2060d3-edf7-48ae-9785-c0e3a1cbb311)
+![Screenshot (8)](https://github.com/mody100000/fashion-flow/assets/69405482/3ff7cb0a-7b42-4afd-a77c-d85e2047e898)
+the localization feature is one of the best features that fashion flow has, it makes users switch between different languages and fashion flow contains both Arabic and English languages
+![Screenshot (9)](https://github.com/mody100000/fashion-flow/assets/69405482/c9d119a4-a0fb-4bb0-833a-9e929ac64609)
+fashion flow is fully authenticated 
+![Screenshot (12)](https://github.com/mody100000/fashion-flow/assets/69405482/954d893e-7f09-4363-b146-7a0f134db69a)
+when the user logs in the first thing going to appears is the dashboard in the navbar there is the localization icon and some feature work like the settings and light mood, in the sidebar there are the 4 main routes which is the customer, product, categories and the receipts and at the end of the sidebar there is the logout, 
+in the body of the dashboard it contains three cards of categories and products and customers this card shows how many items are on this card 
+after that, there are the statistics and the analytics which contain three graphs of the same cards and it shows the progress of the addition,
+after that, there are the category cards which contain the icon of the category and the name of the category and how many items or products are in this category
