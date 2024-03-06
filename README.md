@@ -22,5 +22,7 @@ after that, there are the category cards which contain the icon of the category 
 ![Screenshot (395)](https://github.com/mody100000/fashion-flow/assets/69405482/6a1dcbaa-c7bf-4319-86d7-74d7086dabd4)
 ![Screenshot (396)](https://github.com/mody100000/fashion-flow/assets/69405482/c665de33-320b-409b-8042-ba327dd4e205)
 ![Screenshot (397)](https://github.com/mody100000/fashion-flow/assets/69405482/957a542a-b1d4-46a6-9d5d-cb0f05046108)
-
+![Screenshot (399)](https://github.com/mody100000/fashion-flow/assets/69405482/4336fef9-d021-433e-827f-68a4f061641b)
+![Screenshot (400)](https://github.com/mody100000/fashion-flow/assets/69405482/4fd7d69d-2586-46e7-97ea-29be0b5cce56)
+![Screenshot (401)](https://github.com/mody100000/fashion-flow/assets/69405482/bab85d39-3ff8-40a4-8f42-f6e72a5dce96)
 
