@@ -14,3 +14,13 @@ after that, there are the statistics and the analytics which contain three graph
 after that, there are the category cards which contain the icon of the category and the name of the category and how many items or products are in this category
 ![Screenshot (15)](https://github.com/mody100000/fashion-flow/assets/69405482/d07251cf-08ac-4dfd-aa65-37d11bf29d6e)
 ![Screenshot (19)](https://github.com/mody100000/fashion-flow/assets/69405482/f8531d02-779e-4ec6-93f7-13950c113f06)
+![Screenshot (389)](https://github.com/mody100000/fashion-flow/assets/69405482/fbeadb57-e590-4da0-962b-ab2e869c640f)
+![Screenshot (390)](https://github.com/mody100000/fashion-flow/assets/69405482/18941849-24aa-4536-8fd0-bae0ff10bd0b)
+![Screenshot (392)](https://github.com/mody100000/fashion-flow/assets/69405482/659d6d65-b822-4d18-a57a-ee80895d9ab5)
+![Screenshot (393)](https://github.com/mody100000/fashion-flow/assets/69405482/689acc24-54b3-44b6-89f7-4f571ff97a50)
+![Screenshot (394)](https://github.com/mody100000/fashion-flow/assets/69405482/1cd46b93-d127-430c-9176-fc62fad6852a)
+![Screenshot (395)](https://github.com/mody100000/fashion-flow/assets/69405482/6a1dcbaa-c7bf-4319-86d7-74d7086dabd4)
+![Screenshot (396)](https://github.com/mody100000/fashion-flow/assets/69405482/c665de33-320b-409b-8042-ba327dd4e205)
+![Screenshot (397)](https://github.com/mody100000/fashion-flow/assets/69405482/957a542a-b1d4-46a6-9d5d-cb0f05046108)
+
+
